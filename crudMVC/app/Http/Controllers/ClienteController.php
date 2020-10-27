@@ -13,7 +13,7 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        $datos['clientes']=Cliente::paginate(5);
+        $datos['clientes'] = Cliente::recuperar();
         return view('clientes.index',$datos);
     }
     public function create()
@@ -27,26 +27,23 @@ class ClienteController extends Controller
         return $clientes;
     }
 
-    //recibe un form request
+    //recibe un form request 
     public function store(StoreCliente $request)
     {
         //$cliente = new Cliente($request->rfc,$request->nombre,$request->edad,$request->idCiudad);
 
         $cliente = new Cliente();
-        $cliente->rfc = $request->rfc;
+        $cliente->rfc = strtoupper($request->rfc);
         $cliente->nombre = $request->nombre;
         $cliente->edad = $request->edad;
         $cliente->idCiudad = $request->idCiudad;
-        
-        
 
         //return $cliente->getAttribute('edad');
         try{
-            Cliente::nuevoCliente($cliente);
+            Cliente::nuevo($cliente);
             return back()->with('correcto','El cliente fue agregado correctamente');
         }
         catch(Exception $e){
-            //return view('clientes.create');
             return back()->with('error','Error, el cliente no pudo ser agregado');
         }
     }

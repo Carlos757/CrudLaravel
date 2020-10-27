@@ -19,3 +19,4 @@ Route::get('/', [ClienteController::class, 'index'])->name('clientes.index');
 
 Route::get('clientes/create', [ClienteController::class, 'create'])->name('clientes.create');
 Route::post('clientes/store', [ClienteController::class, 'store'])->name('clientes.store');
+Route::post('clientes/delete', [ClienteController::class, 'delete'])->name('clientes.delete');
