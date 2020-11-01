@@ -12,11 +12,6 @@ class Cliente extends Model
     use HasFactory;
     public $timestamps = false;
     private $bd;
-
-    public function __construct()
-    {
-        $this->bd = new bd();
-    }
     
     protected $fillable = [
         'rfc',
@@ -26,15 +21,12 @@ class Cliente extends Model
     ];
     public static function recuperar()
     {
-        return bd::recuperarClientes();
+        return Cliente::paginate(5);
         
     }
-
     public static function nuevo($cliente)
     {   
-        bd::creaCliente($cliente);
-        //$cliente->save();
-            
+        $cliente->save();   
     }
     //protected $guarded = []; 
 
@@ -70,4 +62,3 @@ class Cliente extends Model
     
 
 }
-
