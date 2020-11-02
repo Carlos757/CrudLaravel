@@ -4,7 +4,6 @@
 
 @section('content')
 
-
 <br><br>
 <div class="max-w-3xl mx-auto shadow-xl p-10 bg-white rounded">
     <div class="flex mb-5">
@@ -22,34 +21,37 @@
                 <th class="px-6 py3">Nombre</th>
                 <th class="px-6 py3">Edad</th>
                 <th class="px-6 py3">IdCiudad</th>
-                <th class="px-6 py3">
+                <th class="px-8 py3">
                     Opciones
                 </th>
             </tr>
 
         <tbody>
-            @foreach ($clientes as $cliente)
+        @foreach ($clientes as $cliente)
             <tr class="text-center">
                 <td class="px-6 py-4">{{ $cliente->rfc}}</td>
                 <td class="px-6 py-4">{{ $cliente->nombre}}</td>
                 <td class="px-6 py-4">{{ $cliente->edad}}</td>
                 <td class="px-6 py-4">{{ $cliente->idCiudad}}</td>
                 <td class="px-6 py-4">
-                    <button class="bg-blue-500 hover:bg-blue-600 mb-2 text-white font-bold py-1 rounded-full w-full">
-                        Editar
-                    </button>
-                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 rounded-full w-full">
-                        Borrar
-                    </button>
+                    <div class="inline-flex">
+                        <a href="{{route('clientes.edit', $cliente)}}" class="bg-blue-300 hover:bg-blue-400 text-blue-800 font-bold py-1 px-2 rounded-l">
+                          Editar
+                        </a>
+                        <button class="modal-open bg-red-300 hover:bg-red-400 text-red-800 font-bold py-1 px-2 rounded-r">
+                          Borrar
+                        </button>
+                        <x-modal :cliente="$cliente"></x-modal>                       
+                      </div>
                 </td>
             </tr>
-            @endforeach
+        @endforeach
         </tbody>
         </thead>
     </table>
 
     
-    <div class="justify-items-center">
+    <div class="z-0">
         <br>
         <ul class="">
             {{ $clientes->links() }}

@@ -11,23 +11,52 @@ class Cliente extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    private $bd;
-    
+    protected $primaryKey = 'rfc';
+    protected $keyType = 'string';
+    private static $estado;
+    private static $mensaje;
+
     protected $fillable = [
         'rfc',
         'nombre',
         'edad',
         'idCiudad',
     ];
+
     public static function recuperar()
     {
-        return Cliente::paginate(5);
+        return Cliente::paginate(8);
         
     }
     public static function nuevo($cliente)
     {   
         $cliente->save();   
     }
+    public static function actualizar($cliente)
+    {   
+        if($cliente->isDirty())
+        {
+            $cliente->save();   
+            self::$estado = 'correcto';
+            self::$mensaje = 'El cliente fue actualizado correctamente';
+            return;
+        }
+        self::$estado = 'advertencia';
+        self::$mensaje = 'No se realizaron cambios';
+        return; 
+    }
+    public static function elimina($cliente)
+    {
+        $cliente->delete();
+    }
+
+    public static function getEstado(){
+        return self::$estado;
+    }
+    public static function getMensaje(){
+        return self::$mensaje;
+    }
+
     //protected $guarded = []; 
 
     /* private  $rfc;
