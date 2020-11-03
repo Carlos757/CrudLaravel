@@ -27,7 +27,7 @@ window.addEventListener("load", function () {
 });
 
 ///////////modal
-var openmodal = document.querySelectorAll('.modal-open')
+/* var openmodal = document.querySelectorAll('.modal-open')
     for (var i = 0; i < openmodal.length; i++) {
       openmodal[i].addEventListener('click', function(event){
     	event.preventDefault()
@@ -63,5 +63,5 @@ var openmodal = document.querySelectorAll('.modal-open')
       modal.classList.toggle('opacity-0')
       modal.classList.toggle('pointer-events-none')
       body.classList.toggle('modal-active')
-    }
+    } */
     

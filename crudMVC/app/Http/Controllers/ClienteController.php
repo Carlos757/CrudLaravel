@@ -24,8 +24,7 @@ class ClienteController extends Controller
 
     public function show()
     {
-        $clientes = Cliente::all();
-        return $clientes;
+        return Cliente::all();
     }
 
     //recibe un form request 
@@ -62,7 +61,7 @@ class ClienteController extends Controller
 
         return back()->with(Cliente::getEstado(),Cliente::getMensaje());
     }
-    public function destroy(Request $request,Cliente $cliente)
+    public function destroy(Cliente $cliente)
     {
         Cliente::elimina($cliente);
         return redirect()->back();
