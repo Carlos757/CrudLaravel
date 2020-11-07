@@ -13,8 +13,6 @@ class Cliente extends Model
     public $timestamps = false;
     protected $primaryKey = 'rfc';
     protected $keyType = 'string';
-    private static $estado;
-    private static $mensaje;
 
     protected $fillable = [
         'rfc',
@@ -37,24 +35,13 @@ class Cliente extends Model
         if($cliente->isDirty())
         {
             $cliente->save();   
-            self::$estado = 'correcto';
-            self::$mensaje = 'El cliente fue actualizado correctamente';
-            return;
+            return true;
         }
-        self::$estado = 'advertencia';
-        self::$mensaje = 'No se realizaron cambios';
-        return; 
+        return false; 
     }
     public static function elimina($cliente)
     {
         $cliente->delete();
-    }
-
-    public static function getEstado(){
-        return self::$estado;
-    }
-    public static function getMensaje(){
-        return self::$mensaje;
     }
 
     //protected $guarded = []; 

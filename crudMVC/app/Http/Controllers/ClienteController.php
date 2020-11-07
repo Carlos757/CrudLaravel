@@ -57,9 +57,14 @@ class ClienteController extends Controller
         $cliente->edad = $request->edad;
         $cliente->idCiudad = $request->idCiudad;
 
-        Cliente::actualizar($cliente);
+        $resultado = Cliente::actualizar($cliente);
 
-        return back()->with(Cliente::getEstado(),Cliente::getMensaje());
+        if($resultado){
+            return back()->with('correcto','El cliente fue actualizado correctamente');
+        }else{
+            return back()->with('advertencia','No se realizaron cambios');
+        }
+
     }
     public function destroy(Cliente $cliente)
     {
