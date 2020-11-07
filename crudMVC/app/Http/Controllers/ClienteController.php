@@ -22,23 +22,22 @@ class ClienteController extends Controller
         return view('clientes.create');
     }
 
-    public function show()
+    public function show(Request $request)
     {
-        return Cliente::all();
+        $busqueda = $request->buscar;
+        $datos['clientes'] = Cliente::buscar($busqueda);
+        return view('clientes.index',$datos);
     }
 
     //recibe un form request 
     public function store(StoreCliente $request)
     {
-        //$cliente = new Cliente($request->rfc,$request->nombre,$request->edad,$request->idCiudad);
-
         $cliente = new Cliente();
         $cliente->rfc = strtoupper($request->rfc);
         $cliente->nombre = $request->nombre;
         $cliente->edad = $request->edad;
         $cliente->idCiudad = $request->idCiudad;
 
-        //return $cliente->getAttribute('edad');
         try{
             Cliente::nuevo($cliente);
             return back()->with('correcto','El cliente fue agregado correctamente');

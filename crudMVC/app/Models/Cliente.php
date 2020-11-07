@@ -23,8 +23,14 @@ class Cliente extends Model
 
     public static function recuperar()
     {
-        return Cliente::paginate(8);
-        
+        return Cliente::paginate(5);
+   
+    }
+    public static function buscar($busqueda)
+    {
+        return Cliente::where('nombre', 'like', '%'.$busqueda.'%')
+                    ->orWhere('rfc', 'like', '%'.$busqueda.'%')->paginate(5);
+   
     }
     public static function nuevo($cliente)
     {   

@@ -23,4 +23,6 @@ Route::put('clientes/update/{cliente}', [ClienteController::class, 'update'])->n
 
 Route::delete('clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
 
+Route::post('/', [ClienteController::class, 'show'])->name('clientes.show');
+
 
