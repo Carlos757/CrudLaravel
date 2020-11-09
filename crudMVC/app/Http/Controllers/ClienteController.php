@@ -34,7 +34,7 @@ class ClienteController extends Controller
     {
         $cliente = new Cliente();
         $cliente->rfc = strtoupper($request->rfc);
-        $cliente->nombre = $request->nombre;
+        $cliente->nombre = ucfirst(strtolower($request->nombre));
         $cliente->edad = $request->edad;
         $cliente->idCiudad = $request->idCiudad;
 
@@ -52,7 +52,7 @@ class ClienteController extends Controller
     }
     public function update(UpdateCliente $request, Cliente $cliente)
     {
-        $cliente->nombre = $request->nombre;
+        $cliente->nombre = ucfirst(strtolower($request->nombre));
         $cliente->edad = $request->edad;
         $cliente->idCiudad = $request->idCiudad;
 

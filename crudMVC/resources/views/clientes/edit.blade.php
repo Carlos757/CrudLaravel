@@ -11,7 +11,7 @@
 
         <h1 class="text-2xl font-black mb-4">Actualizar Cliente</h1>
         <div class="mb-4 relative">
-            <input value="{{$cliente->rfc}}" readonly name="rfc" type="text" class="input bg-gray-300 border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-gray-700 focus:outline-none active:outline-none active:border-indigo-600" autofocus>
+            <input value="{{$cliente->rfc}}" readonly name="rfc" type="text" class="input focus input-form bg-gray-300" autofocus>
             <label for="rfc" class="label absolute mb-0 -mt-2 pt-4 pl-3 leading-tighter text-gray-400 text-base mt-2 cursor-text">RFC</label>
             @error('rfc')
             <div class="bg-red-100 border-l-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
@@ -24,8 +24,9 @@
             </div>
             @enderror
         </div>
+
         <div class="mb-4 relative">
-            <input value="{{$cliente->nombre}}" name="nombre" wire:model="nombre" type="text" class="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-gray-700 focus:outline-none active:outline-none active:border-indigo-600" autofocus>
+            <input value="{{$cliente->nombre}}" name="nombre" type="text" class="input focus input-form" autofocus>
             <label for="nombre" class="label absolute mb-0 -mt-2 pt-4 pl-3 leading-tighter text-gray-400 text-base mt-2 cursor-text">Nombre</label>
             @error('nombre')
             <div class="bg-red-100 border-l-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
@@ -38,9 +39,10 @@
             </div>
             @enderror
         </div>
+
         <div class="mb-4 relative">
-            <input value="{{$cliente->edad}}" name="edad" wire:model="edad" type="text"
-                class="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-gray-700 focus:outline-none active:outline-none active:border-indigo-600"
+            <input value="{{$cliente->edad}}" name="edad" type="text"
+                class="input focus input-form"
                 autofocus>
             <label for="edad"
                 class="label absolute mb-0 -mt-2 pt-4 pl-3 leading-tighter text-gray-400 text-base mt-2 cursor-text">Edad</label>
@@ -55,9 +57,10 @@
             </div>
             @enderror
         </div>
+        
         <div class="mb-4 relative">
-            <input value="{{$cliente->idCiudad}}" name="idCiudad" wire:model="idCiudad" type="text"
-                class="input border border-gray-400 appearance-none rounded w-full px-3 py-3 pt-5 pb-2 focus focus:border-gray-700 focus:outline-none active:outline-none active:border-indigo-600"
+            <input value="{{$cliente->idCiudad}}" name="idCiudad" type="text"
+                class="input focus input-form"
                 autofocus>
             <label for="idCiudad"
                 class="label absolute mb-0 -mt-2 pt-4 pl-3 leading-tighter text-gray-400 text-base mt-2 cursor-text">IdCiudad</label>
@@ -77,19 +80,9 @@
         <br>
 
         <div class="flex p-2 mt-4">
-            <a href="{{route('clientes.index')}}" class="text-base hover:scale-110 focus:outline-none flex justify-center px-4 py-2 rounded-xl font-bold cursor-pointer 
-        hover:bg-gray-200  
-        bg-gray-100 
-        text-gray-700 
-        border duration-200 ease-in-out 
-        border-gray-600 transition">Regresar</a>
+            <a href="{{route('clientes.index')}}" class="btn-regresar">Regresar</a>
             <div class="flex-auto flex flex-row-reverse">
-                <button type="submit" class="text-base  ml-2  hover:scale-110 focus:outline-none flex justify-center px-4 py-2 font-bold cursor-pointer rounded-xl
-        hover:bg-teal-700  
-        bg-teal-500 
-        text-white 
-        border duration-200 ease-in-out 
-        border-teal-600 transition px-8">Actualizar</button>
+                <button type="submit" class="btn-submit">Actualizar</button>
             </div>
         </div>
     </div>

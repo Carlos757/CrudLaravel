@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use PhpParser\Node\Stmt\TryCatch;
+use phpDocumentor\Reflection\Types\Self_;
 
 class Cliente extends Model
 {
@@ -14,21 +13,14 @@ class Cliente extends Model
     protected $primaryKey = 'rfc';
     protected $keyType = 'string';
 
-    protected $fillable = [
-        'rfc',
-        'nombre',
-        'edad',
-        'idCiudad',
-    ];
-
     public static function recuperar()
     {
-        return Cliente::paginate(5);
+        return Self::paginate(5);
    
     }
     public static function buscar($busqueda)
     {
-        return Cliente::where('nombre', 'like', '%'.$busqueda.'%')
+        return Self::where('nombre', 'like', '%'.$busqueda.'%')
                     ->orWhere('rfc', 'like', '%'.$busqueda.'%')->paginate(5);
    
     }
@@ -50,6 +42,13 @@ class Cliente extends Model
         $cliente->delete();
     }
 
+
+    /* protected $fillable = [
+        'rfc',
+        'nombre',
+        'edad',
+        'idCiudad',
+    ]; */
     //protected $guarded = []; 
 
     /* private  $rfc;
